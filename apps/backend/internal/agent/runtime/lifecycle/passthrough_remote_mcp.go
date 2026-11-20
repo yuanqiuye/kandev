@@ -27,7 +27,8 @@ func (m *Manager) applySSHPassthroughMCP(ctx context.Context, execution *AgentEx
 		return preparedPassthroughMCP{}, err
 	}
 	artifacts, err := pt.MCPStrategy.BuildPassthroughMCP(resolved, mcpconfig.PassthroughPaths{
-		TempConfigPath: snapshot.ConfigPath, WorkspaceDir: snapshot.WorkspacePath, Unix: true,
+		TempConfigPath: snapshot.ConfigPath, WorkspaceDir: snapshot.WorkspacePath,
+		Unix: !isWindowsRemotePath(snapshot.WorkspacePath),
 	})
 	if err != nil {
 		return preparedPassthroughMCP{}, fmt.Errorf("build remote passthrough MCP config: %w", err)

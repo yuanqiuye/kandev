@@ -17,6 +17,8 @@ REMOTE_AGENTCTL_HELPERS=(
   agentctl-linux-arm64
   agentctl-darwin-arm64
   agentctl-darwin-amd64
+  agentctl-windows-amd64.exe
+  agentctl-windows-arm64.exe
 )
 
 usage() {

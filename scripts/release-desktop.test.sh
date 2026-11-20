@@ -24,6 +24,8 @@ REMOTE_AGENTCTL_HELPERS=(
   agentctl-linux-arm64
   agentctl-darwin-arm64
   agentctl-darwin-amd64
+  agentctl-windows-amd64.exe
+  agentctl-windows-arm64.exe
 )
 
 fail() {
@@ -74,7 +76,9 @@ write_standard_manifest() {
     {"platform":"linux/amd64","asset":"agentctl-linux-amd64.gz","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","size_bytes":123},
     {"platform":"linux/arm64","asset":"agentctl-linux-arm64.gz","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","size_bytes":123},
     {"platform":"darwin/amd64","asset":"agentctl-darwin-amd64.gz","sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","size_bytes":123},
-    {"platform":"darwin/arm64","asset":"agentctl-darwin-arm64.gz","sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","size_bytes":123}
+    {"platform":"darwin/arm64","asset":"agentctl-darwin-arm64.gz","sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","size_bytes":123},
+    {"platform":"windows/amd64","asset":"agentctl-windows-amd64.exe.gz","sha256":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","size_bytes":123},
+    {"platform":"windows/arm64","asset":"agentctl-windows-arm64.exe.gz","sha256":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","size_bytes":123}
   ]
 }
 JSON

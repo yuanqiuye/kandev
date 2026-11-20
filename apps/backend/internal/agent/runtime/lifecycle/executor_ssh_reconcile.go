@@ -207,9 +207,15 @@ func runRemoteSSHReconcile(
 	if err != nil {
 		return sshlaunch.Unresolved(sshlaunch.ReasonProbeUnknown, "reconcile request could not be encoded")
 	}
-	stdout, _, overflow, err := runSSHCommandStdinBounded(
-		ctx, client, shellQuote(bin)+" ssh-reconcile", bytes.NewReader(body), maxSSHReconcileResponseBytes,
-	)
+	var stdout string
+	var overflow bool
+	if isWindowsRemotePath(bin) {
+		stdout, _, overflow, err = runRemoteWindowsSSHReconcile(ctx, client, bin, body)
+	} else {
+		stdout, _, overflow, err = runSSHCommandStdinBounded(
+			ctx, client, shellQuote(bin)+" ssh-reconcile", bytes.NewReader(body), maxSSHReconcileResponseBytes,
+		)
+	}
 	if overflow {
 		return sshlaunch.Unresolved(sshlaunch.ReasonProbeUnknown, "reconcile helper response exceeded its bound")
 	}

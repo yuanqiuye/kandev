@@ -1316,6 +1316,10 @@ jobs:
         if: matrix.suite == 'native'
         run: go test -race -v -run '^TestAgentSurvivalAvailabilityMatchesPlatformScope$' ./internal/runtimeflags
 
+      - name: Test Windows SSH remote executor
+        if: matrix.suite == 'native'
+        run: go test -trimpath -tags fts5 -race -v -run '^Test(Windows|DetectRemoteInfoFallsBackToPowerShell|AgentctlResolverManifestDownloadsWindowsExe|EnsureAgentctlOnHostUploadsAndReplacesWindowsExe|SSHExecutorCreateInstanceWindows|SSHExecutorWindows|SSHWindowsOrphanSweep|MaterializeSSHSkillManifestSupportsWindows|BuildSSHCreateInstanceRequestUsesRemoteJournal|QuoteWindowsArg|CandidateShellsForPlatform)' ./internal/agent/runtime/lifecycle ./internal/ssh
+
       - name: Save Windows Go modules
         if: success() && matrix.suite == 'compile' && steps.windows_module_cache.outputs.cache-hit != 'true'
         continue-on-error: true

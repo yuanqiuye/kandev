@@ -116,7 +116,7 @@ func newRemoteContainerHostFiles(platform SSHRemotePlatform) remoteContainerHost
 // has no matching helper. Failing here keeps an unsupported remote from
 // producing a container whose helper cannot execute.
 func (r remoteContainerHostFiles) AgentctlBinary() (string, error) {
-	if err := SSHRequireSupportedRemotePlatform(r.platform); err != nil {
+	if err := SSHRequireSupportedRemoteDockerPlatform(r.platform); err != nil {
 		return "", err
 	}
 	return "", nil

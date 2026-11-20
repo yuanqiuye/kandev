@@ -226,6 +226,8 @@ func TestRequireSupportedRemotePlatform(t *testing.T) {
 		{GOOS: "linux", GOARCH: "arm64", UnameOS: "Linux", UnameArch: "aarch64"},
 		{GOOS: "darwin", GOARCH: "arm64", UnameOS: "Darwin", UnameArch: "arm64"},
 		{GOOS: "darwin", GOARCH: "amd64", UnameOS: "Darwin", UnameArch: "x86_64"},
+		{GOOS: "windows", GOARCH: "amd64", UnameOS: "Windows_NT", UnameArch: "AMD64"},
+		{GOOS: "windows", GOARCH: "arm64", UnameOS: "Windows_NT", UnameArch: "ARM64"},
 	} {
 		if err := requireSupportedRemotePlatform(platform); err != nil {
 			t.Errorf("%s should be supported, got %v", platform.String(), err)

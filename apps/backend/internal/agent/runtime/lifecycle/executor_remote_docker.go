@@ -279,7 +279,7 @@ func (r *RemoteDockerExecutor) dialRemote(ctx context.Context, req *ExecutorCrea
 		_ = sshClient.Close()
 		return nil, fmt.Errorf("remote docker: probe %s: %w", target.Host, err)
 	}
-	if err := SSHRequireSupportedRemotePlatform(info.Platform); err != nil {
+	if err := SSHRequireSupportedRemoteDockerPlatform(info.Platform); err != nil {
 		_ = sshClient.Close()
 		return nil, fmt.Errorf("remote docker: %w", err)
 	}

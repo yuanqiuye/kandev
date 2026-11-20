@@ -33,6 +33,8 @@ var requiredAgentctlRemoteHelpers = []agentctlRemoteHelper{
 	{Name: "agentctl-linux-arm64", Label: "agentctl linux/arm64 helper"},
 	{Name: "agentctl-darwin-arm64", Label: "agentctl darwin/arm64 helper", MustBeSigned: true},
 	{Name: "agentctl-darwin-amd64", Label: "agentctl darwin/amd64 helper"},
+	{Name: "agentctl-windows-amd64.exe", Label: "agentctl windows/amd64 helper"},
+	{Name: "agentctl-windows-arm64.exe", Label: "agentctl windows/arm64 helper"},
 }
 
 func resolveRuntimeBundle(build ...BuildInfo) (runtimeBundle, error) {

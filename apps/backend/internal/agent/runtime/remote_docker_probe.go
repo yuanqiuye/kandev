@@ -158,7 +158,7 @@ func (p *RemoteDockerProber) runPlatform(ctx context.Context, client *ssh.Client
 		step.Error = err.Error()
 		return "", step
 	}
-	if err := lifecycle.SSHRequireSupportedRemotePlatform(info.Platform); err != nil {
+	if err := lifecycle.SSHRequireSupportedRemoteDockerPlatform(info.Platform); err != nil {
 		step.Error = err.Error()
 		step.Output = info.Platform.String()
 		return info.Platform.String(), step

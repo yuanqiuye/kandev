@@ -64,6 +64,8 @@ function standardManifest() {
       ["linux/arm64", "agentctl-linux-arm64.gz", "b"],
       ["darwin/amd64", "agentctl-darwin-amd64.gz", "c"],
       ["darwin/arm64", "agentctl-darwin-arm64.gz", "d"],
+      ["windows/amd64", "agentctl-windows-amd64.exe.gz", "e"],
+      ["windows/arm64", "agentctl-windows-arm64.exe.gz", "f"],
     ].map(([platform, asset, marker]) => ({
       platform,
       asset,
@@ -98,6 +100,8 @@ async function createRuntimeArchives(root, { variant }) {
           "agentctl-linux-arm64",
           "agentctl-darwin-amd64",
           "agentctl-darwin-arm64",
+          "agentctl-windows-amd64.exe",
+          "agentctl-windows-arm64.exe",
         ].map((name) =>
           writeFile(path.join(binDir, name), `stub ${name}\n`, { mode: 0o755 }),
         ),

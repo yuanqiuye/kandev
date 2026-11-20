@@ -30,6 +30,11 @@ func TestReadinessShellForRequest(t *testing.T) {
 			want:     "bash",
 		},
 		{
+			name:     "windows defaults to powershell",
+			platform: lifecycle.SSHRemotePlatform{GOOS: "windows", GOARCH: "amd64"},
+			want:     "powershell",
+		},
+		{
 			name: "unknown defaults to bash",
 			want: "bash",
 		},
@@ -41,5 +46,23 @@ func TestReadinessShellForRequest(t *testing.T) {
 				t.Fatalf("readinessShellForRequest() = %q, want %q", got, tc.want)
 			}
 		})
+	}
+}
+
+func TestCandidateShellsForPlatform(t *testing.T) {
+	winShells, winProbe := candidateShellsForPlatform(lifecycle.SSHRemotePlatform{GOOS: "windows", GOARCH: "amd64"})
+	if winProbe != "powershell" {
+		t.Fatalf("windows probe shell = %q, want powershell", winProbe)
+	}
+	if len(winShells) == 0 || winShells[0] != "powershell" {
+		t.Fatalf("windows candidate shells = %v, want powershell first", winShells)
+	}
+
+	posixShells, posixProbe := candidateShellsForPlatform(lifecycle.SSHRemotePlatform{GOOS: "linux", GOARCH: "amd64"})
+	if posixProbe != "sh" {
+		t.Fatalf("linux probe shell = %q, want sh", posixProbe)
+	}
+	if len(posixShells) == 0 || posixShells[0] != "bash" {
+		t.Fatalf("linux candidate shells = %v, want bash first", posixShells)
 	}
 }

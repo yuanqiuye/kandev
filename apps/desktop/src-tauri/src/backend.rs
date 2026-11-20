@@ -40,17 +40,21 @@ const HEALTH_READY_SETTLE: Duration = Duration::from_millis(100);
 const REMOTE_HELPER_MANIFEST_SCHEMA_VERSION: u32 = 1;
 const REMOTE_HELPER_MANIFEST_MAX_BYTES: u64 = 64 * 1024;
 const REMOTE_HELPER_MAX_BYTES: u64 = 256 * 1024 * 1024;
-const REMOTE_AGENTCTL_HELPERS: [(&str, &str); 4] = [
+const REMOTE_AGENTCTL_HELPERS: [(&str, &str); 6] = [
     ("agentctl-linux-amd64", "agentctl linux/amd64 helper"),
     ("agentctl-linux-arm64", "agentctl linux/arm64 helper"),
     ("agentctl-darwin-arm64", "agentctl darwin/arm64 helper"),
     ("agentctl-darwin-amd64", "agentctl darwin/amd64 helper"),
+    ("agentctl-windows-amd64.exe", "agentctl windows/amd64 helper"),
+    ("agentctl-windows-arm64.exe", "agentctl windows/arm64 helper"),
 ];
-const REMOTE_HELPER_MANIFEST_RECORDS: [(&str, &str); 4] = [
+const REMOTE_HELPER_MANIFEST_RECORDS: [(&str, &str); 6] = [
     ("linux/amd64", "agentctl-linux-amd64.gz"),
     ("linux/arm64", "agentctl-linux-arm64.gz"),
     ("darwin/amd64", "agentctl-darwin-amd64.gz"),
     ("darwin/arm64", "agentctl-darwin-arm64.gz"),
+    ("windows/amd64", "agentctl-windows-amd64.exe.gz"),
+    ("windows/arm64", "agentctl-windows-arm64.exe.gz"),
 ];
 
 #[derive(Clone)]

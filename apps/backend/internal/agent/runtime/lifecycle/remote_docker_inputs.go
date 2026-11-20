@@ -106,7 +106,7 @@ func (r *remoteContainerInputs) DeliverHelpers(ctx context.Context, containerID 
 }
 
 func (r *remoteContainerInputs) addHelpers(up *tarFileUploader) error {
-	if err := SSHRequireSupportedRemotePlatform(r.platform); err != nil {
+	if err := SSHRequireSupportedRemoteDockerPlatform(r.platform); err != nil {
 		return fmt.Errorf("remote docker: %w", err)
 	}
 	if r.resolveAgentctl == nil {

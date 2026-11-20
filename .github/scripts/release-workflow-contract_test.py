@@ -41,6 +41,8 @@ CANONICAL_HELPERS = (
     "agentctl-linux-arm64",
     "agentctl-darwin-amd64",
     "agentctl-darwin-arm64",
+    "agentctl-windows-amd64.exe",
+    "agentctl-windows-arm64.exe",
 )
 HELPER_VERSION = "v1.2.3"
 HELPER_COMMIT = "a" * 40
@@ -728,6 +730,8 @@ class ReleaseWorkflowContractTest(unittest.TestCase):
                 "agentctl-linux-arm64.gz",
                 "agentctl-darwin-amd64.gz",
                 "agentctl-darwin-arm64.gz",
+                "agentctl-windows-amd64.exe.gz",
+                "agentctl-windows-arm64.exe.gz",
             ):
                 (assets_dir / name).write_bytes(b"data")
                 asset_names.append(name)
@@ -769,6 +773,8 @@ class ReleaseWorkflowContractTest(unittest.TestCase):
             "agentctl-linux-arm64.gz",
             "agentctl-darwin-amd64.gz",
             "agentctl-darwin-arm64.gz",
+            "agentctl-windows-amd64.exe.gz",
+            "agentctl-windows-arm64.exe.gz",
         ):
             self.assertIn(name, verify)
         self.assertIn('sidecar="dist/release-assets/$asset.sha256"', verify)
